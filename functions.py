@@ -137,40 +137,40 @@ def addPlayer(con, cur):
     return
 
 def showAttackers(con, cur):
-    query = "SELECT player_id, goals FROM attacker"
+    query = "SELECT B.name, A.goals FROM attacker A, football_player B WHERE A.player_id = B.player_id"
     cur.execute(query)
     con.commit()
     rows = cur.fetchall()
     print("player_id\tgoals\n")
     for row in rows:
-        print("'%s' '%s'" % (row['player_id'], row['goals']))
+        print("'%s'\t'%s'" % (row['name'], row['goals']))
 
 def showDefenders(con, cur):
-    query = "SELECT player_id, tackles FROM defender"
+    query = "SELECT B.name, A.tackles FROM defender A, football_player B WHERE A.player_id = B.player_id"
     cur.execute(query)
     con.commit()
     rows = cur.fetchall()
     print("player_id\tdefenders\n")
     for row in rows:
-        print("'%s'\t'%s'" % (row['player_id'], row['tackles']))
+        print("'%s'\t'%s'" % (row['name'], row['tackles']))
 
 def showMidfielders(con, cur):
-    query = "SELECT player_id, passes FROM midfielder"
+    query = "SELECT B.name, A.passes FROM midfielder A, football_player B WHERE A.player_id = B.player_id"
     cur.execute(query)
     con.commit()
     rows = cur.fetchall()
     print("player_id\tpasses\n")
     for row in rows:
-        print("'%s' '%s'" % (row['player_id'], row['passes']))
+        print("'%s'\t'%s'" % (row['name'], row['passes']))
 
 def showGoalies(con, cur):
-    query = "SELECT player_id, saves FROM goalkeeper"
+    query = "SELECT B.name, A.saves FROM goalkeeper A, football_player B WHERE A.player_id = B.player_id"
     cur.execute(query)
     con.commit()
     rows = cur.fetchall()
     print("player_id\tsaves\n")
     for row in rows:
-        print("'%s' '%s'" % (row['player_id'], row['saves']))
+        print("'%s'\t'%s'" % (row['name'], row['saves']))
 
 def addClub(con, cur):
     # global cur
@@ -261,7 +261,8 @@ def addBest11(con, cur):
 
 def viewTopUsers(con, cur):
     # global cur
-    query = "SELECT * FROM User ORDER BY current_total_points DESC LIMIT 10"
+    limit = int(input("Enter Number of Top Users : "))
+    query = "SELECT * FROM User ORDER BY current_total_points DESC LIMIT %d"%(limit)
     cur.execute(query)
     con.commit()
     rows = cur.fetchall()
@@ -273,7 +274,8 @@ def viewTopUsers(con, cur):
 
 def viewTopPlayers(con, cur):
     # global cur
-    query = "SELECT * FROM football_player ORDER BY rating DESC LIMIT 10"
+    limit = int(input("Enter Number of Top Players : "))
+    query = "SELECT * FROM football_player ORDER BY rating DESC LIMIT %d"%(limit)
     cur.execute(query)
     con.commit()
     rows = cur.fetchall()
@@ -285,7 +287,8 @@ def viewTopPlayers(con, cur):
 
 def viewTopClubs(con, cur):
     # global cur
-    query = "SELECT * FROM football_club ORDER BY club_rating DESC LIMIT 10"
+    limit = int(input("Enter Number of Top Clubs : "))
+    query = "SELECT * FROM football_club ORDER BY club_rating DESC LIMIT %d"%(limit)
     cur.execute(query)
     con.commit()
     rows = cur.fetchall()
