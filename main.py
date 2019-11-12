@@ -22,7 +22,7 @@ optionFunctionMapping = {
     16: transferPlayerIn,
     17: updatePlayer,
     18: updateClub,
-    18: updateLge,
+    19: updateLge,
     20: updatePlayerRating,
     21: updateClubRating, 
     22: updateUserScores,
@@ -65,8 +65,8 @@ while(1):
                 print("12: view Top Clubs")
                 print("13: choose Team")
                 print("14: choose Club")
-                print("15: Transfer In Player")
-                print("16: Transfer Out Player")
+                print("15: Transfer Out Player")
+                print("16: Transfer In Player")
                 print("17: update Player")
                 print("18: update Club")
                 print("19: update League")

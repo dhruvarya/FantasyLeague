@@ -566,7 +566,7 @@ def updateLge(con, cur):
     country = input("Country: ")
     league_name = (input("League Name : "))
 
-    query = "UPDATE league SET country = '%s', name = '%s' WHERE league_id = '%d'" %(country, name, league_id)
+    query = "UPDATE league SET country = '%s', name = '%s' WHERE league_id = '%d'" %(country, league_name, league_id)
 
     cur.execute(query)
     con.commit()
