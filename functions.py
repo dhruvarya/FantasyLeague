@@ -12,7 +12,7 @@ def registerNewUser(con, cur):
     row["dob"] = input("Birth Date (YYYY-MM-DD): ")
     row["Capt Player Id"] = int(input("Capt Player Id: "))
     row["current total points"] = int(0)
-    row["money_left"] = int(1000000000)
+    row["money_left"] = int(250)
     query = "INSERT INTO `User` VALUES('%s', '%s', 0, %d, %d, %d, '%s')" %(row["Fname"], row["Lname"], row["Capt Player Id"], row["current total points"], row["money_left"], row["dob"])
 
     cur.execute(query)
