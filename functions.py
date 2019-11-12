@@ -222,8 +222,7 @@ def addBest11(con, cur):
     # global cur
     row = {}
     print("Enter best11 player's details: ")
-    row["match_week"] = int(print("enter matchweek: "))
-    print("Enter goalkeeper player_id")
+    match_week = int(input("enter matchweek: "))
     row["goal_id"] = int(input("enter goalkeeper player_id: "))
     print("Enter 4 defenders")
     row["def_1"] = int(input("enter defender 1: "))
@@ -529,16 +528,16 @@ def transferPlayerIn(con, cur):
 def updatePlayer(con, cur):
     # global cur
     row = {}
-    print("Enter updated player's details: ")
+    print("Enter updated player's details : ")
     player_id = int(input("Enter Player ID : "))
     price = int(input("Price : "))
     club_id = int(input("Club ID :"))
     ranking = int(input("Ranking : "))
     country = input("Country : ")
     name = input("Name : ")
-    age = int(input("Age :"))
+    age = int(input("Age : "))
 
-    query = "UPDATE football_player SET price = '%d', club_id = '%d' , ranking = '%d', country = '%d', name ='%s', age='%d' WHERE player_id = '%d'" %(price, club_id, ranking, country, name, age, player_id)
+    query = "UPDATE football_player SET price = '%d', club_id = '%d' , rating = '%d', country = '%s', name ='%s', age='%d' WHERE player_id = '%d'" %(price, club_id, ranking, country, name, age, player_id)
 
     cur.execute(query)
     con.commit()
@@ -587,7 +586,7 @@ def updateClubRating(con, cur):
     print("Update club's ratings: ")
     club_id = input("club id: ")
     new_rating  = (input("New Club Rating: "))
-    query = "UPDATE football_club SET rating = '%d' WHERE club_id = '%d'" %(int(new_rating), int(club_id))
+    query = "UPDATE football_club SET club_rating = '%d' WHERE club_id = '%d'" %(int(new_rating), int(club_id))
     cur.execute(query)
     con.commit()
     return
