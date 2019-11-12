@@ -106,10 +106,8 @@ CREATE TABLE `match` (
   PRIMARY KEY (`club_1_id`,`club_2_id`,`match_week`),
   KEY `club_1_id` (`club_1_id`),
   KEY `club_2_id` (`club_2_id`),
-  KEY `match_week` (`match_week`),
   CONSTRAINT `match_ibfk_1` FOREIGN KEY (`club_1_id`) REFERENCES `football_club` (`club_id`),
-  CONSTRAINT `match_ibfk_2` FOREIGN KEY (`club_2_id`) REFERENCES `football_club` (`club_id`),
-  CONSTRAINT `match_ibfk_3` FOREIGN KEY (`match_week`) REFERENCES `Best11` (`match_week`)
+  CONSTRAINT `match_ibfk_2` FOREIGN KEY (`club_2_id`) REFERENCES `football_club` (`club_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `user_player_relation`;

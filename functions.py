@@ -204,12 +204,12 @@ def addMatch(con, cur):
     # global cur
     row = {}
     print("Enter new match's details: ")
-    row["club_1_id"] = input("enter club id1: ")
-    row["club_2_id"] = input("enter club id2: ")
+    row["club_1_id"] = int(input("enter club id1: "))
+    row["club_2_id"] = int(input("enter club id2: "))
     row["match_date"] = input("Match Date (YYYY-MM-DD): ")
     row["club_1_points"] = int(input("enter club1 points: "))
     row["club_2_points"] = int(input("enter club2 points: "))
-    row["match_week"] = int(input("enter match week"))
+    row["match_week"] = int(input("enter match week : "))
 
     query = "INSERT INTO `match` VALUES (%d, %d, '%s', %d, %d, %d)" %(row["club_1_id"], row["club_2_id"], row["match_date"], row["club_1_points"], row["club_2_points"], row["match_week"])
 
