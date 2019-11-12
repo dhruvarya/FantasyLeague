@@ -629,3 +629,30 @@ def userDetails(con, cur):
     # for row in rows:
         # for attribute, value in row:
             # print('{} : {}'.format(attribute, value))
+
+def viewBest11(con, cur):
+    match_week = int(input("Enter Match Week : "))
+    query = "SELECT name FROM football_player WHERE player_id IN (SELECT player_id FROM best11_att WHERE match_week = %d)"%(match_week)
+    cur.execute(query)
+    con.commit()
+    atts = cur.fetchall()
+    query = "SELECT name FROM football_player WHERE player_id IN (SELECT player_id FROM best11_def WHERE match_week = %d)"%(match_week)
+    cur.execute(query)
+    con.commit()
+    defs = cur.fetchall()
+    query = "SELECT name FROM football_player WHERE player_id IN (SELECT player_id FROM best11_mid WHERE match_week = %d)"%(match_week)
+    cur.execute(query)
+    con.commit()
+    mids = cur.fetchall()
+    query = "SELECT name FROM football_player WHERE player_id IN (SELECT player_id FROM best11_gkp WHERE match_week = %d)"%(match_week)
+    cur.execute(query)
+    con.commit()
+    gkps = cur.fetchall()
+    for att in atts:
+        print("%s"%(att["name"]))
+    for defe in defs:
+        print("%s"%(defe["name"]))
+    for mid in mids:
+        print("%s"%(mid["name"]))
+    for gol in gkps:
+        print("%s"%(gol["name"]))
