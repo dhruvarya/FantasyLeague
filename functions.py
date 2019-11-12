@@ -12,7 +12,7 @@ def registerNewUser(con, cur):
     row["dob"] = input("Birth Date (YYYY-MM-DD): ")
     row["Capt Player Id"] = int(input("Capt Player Id: "))
     row["current total points"] = int(0)
-    row["money_left"] = int(1000000000)
+    row["money_left"] = int(250)
     query = "INSERT INTO `User` VALUES('%s', '%s', 0, %d, %d, %d, '%s')" %(row["Fname"], row["Lname"], row["Capt Player Id"], row["current total points"], row["money_left"], row["dob"])
 
     cur.execute(query)
@@ -137,40 +137,40 @@ def addPlayer(con, cur):
     return
 
 def showAttackers(con, cur):
-    query = "SELECT player_id, goals FROM attacker"
+    query = "SELECT B.name, A.goals FROM attacker A, football_player B WHERE A.player_id = B.player_id"
     cur.execute(query)
     con.commit()
     rows = cur.fetchall()
     print("player_id\tgoals\n")
     for row in rows:
-        print("'%s' '%s'" % (row['player_id'], row['goals']))
+        print("'%s'\t'%s'" % (row['B.name'], row['A.goals']))
 
 def showDefenders(con, cur):
-    query = "SELECT player_id, tackles FROM defender"
+    query = "SELECT B.name, A.tackles FROM defender A, football_player B WHERE A.player_id = B.player_id"
     cur.execute(query)
     con.commit()
     rows = cur.fetchall()
     print("player_id\tdefenders\n")
     for row in rows:
-        print("'%s'\t'%s'" % (row['player_id'], row['tackles']))
+        print("'%s'\t'%s'" % (row['B.name'], row['A.tackles']))
 
 def showMidfielders(con, cur):
-    query = "SELECT player_id, passes FROM midfielder"
+    query = "SELECT B.name, A.passes FROM midfielder A, football_player B WHERE A.player_id = B.player_id"
     cur.execute(query)
     con.commit()
     rows = cur.fetchall()
     print("player_id\tpasses\n")
     for row in rows:
-        print("'%s' '%s'" % (row['player_id'], row['passes']))
+        print("'%s'\t'%s'" % (row['B.name'], row['A.passes']))
 
 def showGoalies(con, cur):
-    query = "SELECT player_id, saves FROM goalkeeper"
+    query = "SELECT B.name, A.saves FROM goalkeeper A, football_player B WHERE A.player_id = B.player_id"
     cur.execute(query)
     con.commit()
     rows = cur.fetchall()
     print("player_id\tsaves\n")
     for row in rows:
-        print("'%s' '%s'" % (row['player_id'], row['saves']))
+        print("'%s'\t'%s'" % (row['B.name'], row['A.saves']))
 
 def addClub(con, cur):
     # global cur
