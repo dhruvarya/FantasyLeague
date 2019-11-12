@@ -599,9 +599,34 @@ def updateUserScores(con, cur):
     cur.execute(query)
     con.commit()
     rows = cur.fetchall()
-    print(rows)
+    # print(rows)
     new_rating = int(rows[0]["SUM(B.rating)"])
     query = "UPDATE User SET current_total_points = current_total_points + '%d' WHERE user_id = '%d'" %(new_rating, user_id)	
     cur.execute(query)
     con.commit()
     return
+
+def userDetails(con, cur):
+    user_id = int(input("enter user id: "))
+    query = "SELECT * FROM User WHERE user_id = %d" % (user_id);
+    cur.execute(query)
+    con.commit()
+
+    rows = cur.fetchall()
+    # print(rows)
+    for row in rows:
+    	for k in row:
+    		print("%s: %s" % (k, row[k]))
+
+    print("Selected players")
+    query = "SELECT Name FROM football_player A INNER JOIN user_player_relation B ON A.player_id = B.player_id WHERE B.user_id = '%d'" % (user_id)
+    cur.execute(query)
+    con.commit()
+
+    rows = cur.fetchall()
+    for row in rows:
+    	for k in row:
+    		print("\t" + row[k])
+    # for row in rows:
+        # for attribute, value in row:
+            # print('{} : {}'.format(attribute, value))

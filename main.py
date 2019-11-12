@@ -31,7 +31,8 @@ optionFunctionMapping = {
     25: showAttackers,
     26: showMidfielders,
     27: showDefenders,
-    28: showGoalies
+    28: showGoalies,
+    29: userDetails
 
 }
 
@@ -78,6 +79,7 @@ while(1):
                 print("26: Show Midfielders")
                 print("27: Show Defenders")
                 print("28: Show Goalkeepers")
+                print("29: show user details")
                 print("0: exit")
                 c = int(input("Enter choice> "))
                 tmp = sp.call('clear',shell=True)
