@@ -96,7 +96,7 @@ INSERT INTO `football_player` VALUES (0, 14, 17, 75, 'Spain','Isco', 28);
 INSERT INTO `football_player` VALUES (0, 14, 18, 75, 'France', 'Ferland Mendy', 28);
 INSERT INTO `football_player` VALUES (0, 14, 19, 75, 'Dominican Republic', 'Mariano Díaz', 28);
 INSERT INTO `football_player` VALUES (0, 13, 20, 75, 'Brazil', 'Vinícius Júnior', 28);
-INSERT INTO `football_player` VALUES (0, 13, 21, 75, 'Brazil', 'Rodrygo', 28)
+INSERT INTO `football_player` VALUES (0, 13, 21, 75, 'Brazil', 'Rodrygo', 28);
 INSERT INTO `attacker` VALUES (1 , 17);
 INSERT INTO `attacker` VALUES (2 , 59);
 INSERT INTO `attacker` VALUES (3 , 83);
