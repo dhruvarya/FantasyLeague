@@ -155,3 +155,31 @@ INSERT INTO `goalkeeper` VALUES (55 , 78);
 INSERT INTO `goalkeeper` VALUES (56 , 100);
 INSERT INTO `goalkeeper` VALUES (57 , 34);
 INSERT INTO `goalkeeper` VALUES (58 , 106);
+
+
+INSERT INTO `User` VALUES('John', 'Doe', 0, 1, 0, 250, '2019-11-01'); 
+INSERT INTO `User` VALUES('Jane', 'Doe', 0, 1, 0, 250, '2019-11-02'); 
+INSERT INTO `User` VALUES('Narendra', 'Modi', 0, 1, 0, 250, '2019-11-03'); 
+INSERT INTO `User` VALUES('Donald', 'Trump', 0, 1, 0, 250, '2019-11-04'); 
+INSERT INTO `User` VALUES('Vladimir', 'Putin', 0, 1, 0, 250, '2019-11-05'); 
+INSERT INTO `User` VALUES('Rahul', 'Gandhi', 0, 1, 0, 250, '2019-11-06'); 
+
+
+INSERT INTO `Matches` VALUES(1, 2, '2019-11-11', 10, 20, 1);
+INSERT INTO `Matches` VALUES(3, 4, '2019-11-11', 10, 20, 1);
+INSERT INTO `Matches` VALUES(5, 6, '2019-11-12', 10, 20, 1);
+INSERT INTO `Matches` VALUES(7, 8, '2019-11-12', 10, 20, 1);
+INSERT INTO `Matches` VALUES(9, 10, '2019-11-12', 10, 20, 1);
+INSERT INTO `Matches` VALUES(1, 21, '2019-11-13', 10, 20, 2);
+INSERT INTO `Matches` VALUES(13, 2, '2019-11-13', 10, 20, 2);
+INSERT INTO `Matches` VALUES(11, 23, '2019-11-13', 10, 20, 2);
+INSERT INTO `Matches` VALUES(2, 29, '2019-11-14', 10, 20, 2);
+INSERT INTO `Matches` VALUES(10, 29, '2019-11-14', 10, 20, 2);
+INSERT INTO `Matches` VALUES(21, 22, '2019-11-14', 10, 20, 3);
+INSERT INTO `Matches` VALUES(24, 25, '2019-11-15', 10, 20, 3);
+INSERT INTO `Matches` VALUES(26, 27, '2019-11-15', 10, 20, 3);
+INSERT INTO `Matches` VALUES(28, 29, '2019-11-15', 10, 20, 3);
+INSERT INTO `Matches` VALUES(31, 32, '2019-11-16', 10, 20, 3);
+INSERT INTO `Matches` VALUES(33, 4, '2019-11-17', 10, 20, 4);
+INSERT INTO `Matches` VALUES(17, 18, '2019-11-17', 10, 20, 4);
+INSERT INTO `Matches` VALUES(19, 20, '2019-11-17', 10, 20, 4);

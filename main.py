@@ -1,6 +1,7 @@
 import subprocess as sp
 import pymysql
 import pymysql.cursors
+import getpass
 from functions import *
 
 optionFunctionMapping = {
@@ -32,14 +33,15 @@ optionFunctionMapping = {
     26: showMidfielders,
     27: showDefenders,
     28: showGoalies,
-    29: userDetails
+    29: userDetails,
+    30: allMatches
 
 }
 
 while(1):
     tmp = sp.call('clear',shell=True)
-    username = 'newuser'
-    password = 'password'
+    username = input("enter username: ")
+    password = getpass.getpass()
 
     try:
         con = pymysql.connect(host='localhost',
@@ -80,6 +82,7 @@ while(1):
                 print("27: Show Defenders")
                 print("28: Show Goalkeepers")
                 print("29: show user details")
+                print("30: print all matches")
                 print("0: exit")
                 c = int(input("Enter choice> "))
                 tmp = sp.call('clear',shell=True)

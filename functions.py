@@ -211,7 +211,7 @@ def addMatch(con, cur):
     row["club_2_points"] = int(input("enter club2 points: "))
     row["match_week"] = int(input("enter match week : "))
 
-    query = "INSERT INTO `match` VALUES (%d, %d, '%s', %d, %d, %d)" %(row["club_1_id"], row["club_2_id"], row["match_date"], row["club_1_points"], row["club_2_points"], row["match_week"])
+    query = "INSERT INTO `Matches` VALUES (%d, %d, '%s', %d, %d, %d)" %(row["club_1_id"], row["club_2_id"], row["match_date"], row["club_1_points"], row["club_2_points"], row["match_week"])
 
     cur.execute(query)
     con.commit()
@@ -630,3 +630,16 @@ def userDetails(con, cur):
     # for row in rows:
         # for attribute, value in row:
             # print('{} : {}'.format(attribute, value))
+
+def allMatches(con, cur):
+	print("Matchweek\tMatchDate\tClub1\tClub2\tClub1_ratings\tClub2_ratings")
+	query = "SELECT match_week, match_date, B.club_name AS C1, C.club_name AS C2, club_1_points, club_2_points FROM Matches, football_club B, football_club C WHERE B.club_id = club_1_id AND C.club_id = club_2_id;"
+	cur.execute(query)
+	con.commit()
+
+	rows = cur.fetchall()
+	for row in rows:
+		for k in row:
+			print(row[k], end = "\t")
+		print()	
+	return

@@ -95,19 +95,20 @@ CREATE TABLE `Best11`(
 	 PRIMARY KEY (`match_week`)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-DROP TABLE IF EXISTS `match`;
-CREATE TABLE `match` (
+DROP TABLE IF EXISTS `Matches`;
+CREATE TABLE `Matches` (
   `club_1_id` int(11) NOT NULL,
   `club_2_id` int(11) NOT NULL,
   `match_date` date DEFAULT NULL,
   `club_1_points` int(11) NOT NULL,
   `club_2_points` int(11) NOT NULL,
   `match_week` int(11) NOT NULL,
-  PRIMARY KEY (`club_1_id`,`club_2_id`,`match_week`),
   KEY `club_1_id` (`club_1_id`),
   KEY `club_2_id` (`club_2_id`),
-  CONSTRAINT `match_ibfk_1` FOREIGN KEY (`club_1_id`) REFERENCES `football_club` (`club_id`),
-  CONSTRAINT `match_ibfk_2` FOREIGN KEY (`club_2_id`) REFERENCES `football_club` (`club_id`)
+  KEY `match_week` (`match_week`),
+  PRIMARY KEY (`club_1_id`,`club_2_id`,`match_week`),
+  CONSTRAINT `Matches_ibfk_1` FOREIGN KEY (`club_1_id`) REFERENCES `football_club` (`club_id`),
+  CONSTRAINT `Matches_ibfk_2` FOREIGN KEY (`club_2_id`) REFERENCES `football_club` (`club_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `user_player_relation`;
