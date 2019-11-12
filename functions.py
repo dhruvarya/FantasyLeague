@@ -143,7 +143,7 @@ def showAttackers(con, cur):
     rows = cur.fetchall()
     print("player_id\tgoals\n")
     for row in rows:
-        print("'%s'\t'%s'" % (row['B.name'], row['A.goals']))
+        print("'%s'\t'%s'" % (row['name'], row['goals']))
 
 def showDefenders(con, cur):
     query = "SELECT B.name, A.tackles FROM defender A, football_player B WHERE A.player_id = B.player_id"
@@ -152,7 +152,7 @@ def showDefenders(con, cur):
     rows = cur.fetchall()
     print("player_id\tdefenders\n")
     for row in rows:
-        print("'%s'\t'%s'" % (row['B.name'], row['A.tackles']))
+        print("'%s'\t'%s'" % (row['name'], row['tackles']))
 
 def showMidfielders(con, cur):
     query = "SELECT B.name, A.passes FROM midfielder A, football_player B WHERE A.player_id = B.player_id"
@@ -161,7 +161,7 @@ def showMidfielders(con, cur):
     rows = cur.fetchall()
     print("player_id\tpasses\n")
     for row in rows:
-        print("'%s'\t'%s'" % (row['B.name'], row['A.passes']))
+        print("'%s'\t'%s'" % (row['name'], row['passes']))
 
 def showGoalies(con, cur):
     query = "SELECT B.name, A.saves FROM goalkeeper A, football_player B WHERE A.player_id = B.player_id"
@@ -170,7 +170,7 @@ def showGoalies(con, cur):
     rows = cur.fetchall()
     print("player_id\tsaves\n")
     for row in rows:
-        print("'%s'\t'%s'" % (row['B.name'], row['A.saves']))
+        print("'%s'\t'%s'" % (row['name'], row['saves']))
 
 def addClub(con, cur):
     # global cur
@@ -204,12 +204,12 @@ def addMatch(con, cur):
     # global cur
     row = {}
     print("Enter new match's details: ")
-    row["club_1_id"] = input("enter club id1: ")
-    row["club_2_id"] = input("enter club id2: ")
+    row["club_1_id"] = int(input("enter club id1: "))
+    row["club_2_id"] = int(input("enter club id2: "))
     row["match_date"] = input("Match Date (YYYY-MM-DD): ")
     row["club_1_points"] = int(input("enter club1 points: "))
     row["club_2_points"] = int(input("enter club2 points: "))
-    row["match_week"] = int(input("enter match week"))
+    row["match_week"] = int(input("enter match week : "))
 
     query = "INSERT INTO `match` VALUES (%d, %d, '%s', %d, %d, %d)" %(row["club_1_id"], row["club_2_id"], row["match_date"], row["club_1_points"], row["club_2_points"], row["match_week"])
 
@@ -261,7 +261,8 @@ def addBest11(con, cur):
 
 def viewTopUsers(con, cur):
     # global cur
-    query = "SELECT * FROM User ORDER BY current_total_points DESC LIMIT 10"
+    limit = int(input("Enter Number of Top Users : "))
+    query = "SELECT * FROM User ORDER BY current_total_points DESC LIMIT %d"%(limit)
     cur.execute(query)
     con.commit()
     rows = cur.fetchall()
@@ -273,7 +274,8 @@ def viewTopUsers(con, cur):
 
 def viewTopPlayers(con, cur):
     # global cur
-    query = "SELECT * FROM football_player ORDER BY rating DESC LIMIT 10"
+    limit = int(input("Enter Number of Top Players : "))
+    query = "SELECT * FROM football_player ORDER BY rating DESC LIMIT %d"%(limit)
     cur.execute(query)
     con.commit()
     rows = cur.fetchall()
@@ -285,7 +287,8 @@ def viewTopPlayers(con, cur):
 
 def viewTopClubs(con, cur):
     # global cur
-    query = "SELECT * FROM football_club ORDER BY club_rating DESC LIMIT 10"
+    limit = int(input("Enter Number of Top Clubs : "))
+    query = "SELECT * FROM football_club ORDER BY club_rating DESC LIMIT %d"%(limit)
     cur.execute(query)
     con.commit()
     rows = cur.fetchall()
