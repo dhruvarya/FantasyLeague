@@ -509,7 +509,7 @@ def transferPlayerIn(con, cur):
 
 
     if player_price > user_price:
-        print("you don't have enought money in your account" % player_price)
+        print("you don't have enought money in your account money left = %d" % user_price)
     
     query = "UPDATE User SET money_left = money_left - '%d' WHERE user_id = '%d'" % (player_price, user_id)
     cur.execute(query)
@@ -600,6 +600,21 @@ def updateUserScores(con, cur):
     rows = cur.fetchall()
     # print(rows)
     new_rating = int(rows[0]["SUM(B.rating)"])
+    
+    query = "SELECT B.rating FROM User A, football_player B WHERE A.captain_player_id = B.player_id AND A.user_id = '%d'" % (user_id)
+    cur.execute(query)
+    con.commit()
+    rows = cur.fetchall()
+    new_rating = new_rating + 2*int(rows[0]["rating"])
+
+    query = "SELECT B.club_rating FROM user_club_relation A, football_club B WHERE A.club_id = B.club_id AND A.user_id = '%d'" % (user_id)
+    cur.execute(query)
+    con.commit()
+    rows = cur.fetchall()
+    new_rating = new_rating + int(rows[0]["club_rating"])
+   
+    print("score for user %d is increased by %d" % (user_id, new_rating))
+
     query = "UPDATE User SET current_total_points = current_total_points + '%d' WHERE user_id = '%d'" %(new_rating, user_id)	
     cur.execute(query)
     con.commit()
@@ -632,7 +647,7 @@ def userDetails(con, cur):
 
 def allMatches(con, cur):
 	print("Matchweek\tMatchDate\tClub1\tClub2\tClub1_ratings\tClub2_ratings")
-	query = "SELECT match_week, match_date, B.club_name AS C1, C.club_name AS C2, club_1_points, club_2_points FROM Matches, football_club B, football_club C WHERE B.club_id = club_1_id AND C.club_id = club_2_id;"
+	query = "SELECT match_week, match_date, B.club_name AS C1, C.club_name AS C2, club_1_points, club_2_points FROM Matches, football_club B, football_club C WHERE B.club_id = club_1_id AND C.club_id = club_2_id ORDER BY match_week;"
 	cur.execute(query)
 	con.commit()
 
